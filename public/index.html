@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebGIS – Trang chủ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+
+    .navbar {
+      background: #222 !important;
+      padding: 0.5rem 1rem;
+    }
+
+    .navbar .logo {
+      color: #fff;
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-left: 1rem;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      font-size: 1.2rem;
+      margin-left: 1.5rem;
+    }
+
+    .navbar-nav .nav-link.active,
+    .navbar-nav .nav-link:hover {
+      color: #1abc9c !important;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    @media (max-width: 768px) {
+      .navbar .logo {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .navbar .logo {
+        font-size: 1.2rem;
+      }
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .nav-buttons button {
+      background: #888;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-buttons button:hover {
+      background: #1abc9c;
+      transform: scale(1.08);
+    }
+
+    .carousel {
+      padding: 80px 0;
+      background-color: #f5f5f5;
+    }
+
+    .carousel .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .carousel .slide img {
+      width: 70%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .carousel .slide h4 {
+      font-size: 1.2rem;
+      margin: 20px 0 10px;
+    }
+
+    .carousel .slide p {
+      font-size: 0.9rem;
+      color: #555;
+      padding: 0 20px;
+    }
+
+    .carousel .nav-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .carousel .nav-buttons button {
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+      margin: 0 10px;
+    }
+
+    .carousel .nav-buttons button:hover {
+      background: #1abc9c;
+      transform: scale(1.08);
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f9f9f9;
+      padding: 40px 20px;
+    }
+
+    .hero .hero-left,
+    .hero .hero-right {
+      flex: 1;
+    }
+
+    .hero .hero-left {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero .hero-left img {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .hero .hero-right {
+      padding-left: 40px;
+    }
+
+    .hero .hero-right h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero .hero-right p {
+      font-size: 1rem;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .hero .hero-right .btn-primary {
+      display: inline-block;
+      background-color: #1abc9c;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: background-color 0.2s;
+    }
+
+    .hero .hero-right .btn-primary:hover {
+      background-color: #17a589;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .hero .hero-right {
+        padding-left: 0;
+        margin-top: 30px;
+      }
+    }
+
+    .features {
+      padding: 80px 20px;
+      background-color: #fff;
+    }
+
+    .features .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 50px;
+      color: #222;
+    }
+
+    .features .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+    }
+
+    .features .feature-item {
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #ececec;
+    }
+
+    .features .feature-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .features .feature-item img {
+      width: 60px;
+      margin-bottom: 15px;
+    }
+
+    .features .feature-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    .features .feature-item p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .testimonials {
+      padding: 80px 20px;
+      background-color: #fff;
+    }
+
+    .testimonials .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 2rem;
+      margin-bottom: 50px;
+      color: #222;
+    }
+
+    .testimonials .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+    }
+
+    .testimonials .testimonial-item {
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ececec;
+    }
+
+    .testimonials .testimonial-item img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+
+    .testimonials .testimonial-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 5px;
+    }
+
+    .testimonials .testimonial-item p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      .testimonial-item img {
+        margin: 0 auto 15px;
+      }
+    }
+
+    .footer {
+      background-color: #222;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95rem;
+    }
+
+    .footer a {
+      color: #1abc9c;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body class="home-page">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="images/NLU_Logo.png" alt="Logo WebGIS" style="width: 60px; height: 60px;">
+        <span class="logo ms-2">OpenSource</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Trang giới thiệu</a></li>
+          <li class="nav-item"><a class="nav-link" href="map.html">Bản đồ</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Trang liên hệ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <section class="hero">
+
+    <div class="hero-left">
+      <img src="images/BackgroundHomef.png" alt="Background Home" />
+
+    </div>
+
+    <div class="hero-right">
+      <h1></h1>
+      <h1>Ứng dụng WebGIS – Giải pháp Bản đồ Thông minh</h1>
+      <p>
+        Kết nối dữ liệu địa lý thời gian thực, tương tác trực quan và hiện thị thông tin chi tiết chỉ với một cú
+        click.
+        Khám phá ngay tính năng Bản đồ, GetFeatureInfo và Dự báo thời tiết tích hợp.
+      </p>
+      <a href="map.html" class="btn-primary">Xem Bản đồ Ngay</a>
+    </div>
+  </section>
+
+
+  <section class="features">
+    <div class="container">
+      <h2>Tính năng nổi bật</h2>
+      <div class="feature-grid">
+
+        <div class="feature-item">
+          <img src="images/continents-of-earth.png" alt="Tính năng 1" />
+          <h3>Hiển thị đa lớp bản đồ</h3>
+          <p>Hỗ trợ nhiều lớp: OSM, WMS/WFS tùy chỉnh. Cho phép bật/tắt linh hoạt.</p>
+        </div>
+
+        <div class="feature-item">
+          <img src="images/GetInfor.png" alt="Tính năng 2" />
+          <h3>GetFeatureInfo tức thời</h3>
+          <p>Nhấp vào đối tượng bất kỳ để lấy thông tin chi tiết ngay lập tức, không cần tải lại trang.</p>
+        </div>
+
+        <div class="feature-item">
+          <img src="images/rain.png" alt="Tính năng 3" />
+          <h3>Dữ liệu thời tiết tích hợp</h3>
+          <p>Hiển thị thông tin thời tiết và dự báo 5 ngày khi nhấp vào vị trí bất kỳ trên bản đồ.</p>
+        </div>
+
+        <div class="feature-item">
+          <img src="images/responsive.png" alt="Tính năng 4" />
+          <h3>Responsive &amp; Mobile-friendly</h3>
+          <p>Giao diện tự động điều chỉnh, chạy mượt mà trên desktop, tablet và smartphone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="carousel">
+    <div class="container">
+      <div class="slides">
+
+        <div class="slide">
+          <img src="images/BackgroundHomef.png" alt="Demo Slide 1" />
+          <h4>Giao diện thân thiện</h4>
+          <p>Thiết kế đơn giản, dễ sử dụng, giúp người dùng tương tác ngay lập tức với bản đồ.</p>
+        </div>
+
+        <div class="slide">
+          <img src="images/BackgroundHomef.png" alt=" Demo Slide 2" />
+          <h4>Thời tiết thời gian thực</h4>
+          <p>Xem chi tiết nhiệt độ, độ ẩm và gió cho vị trí bạn chọn trên bản đồ.</p>
+        </div>
+
+        <div class="slide">
+          <img src="images/PC_Mobile_2.png" alt="Demo Slide 3" />
+          <h4>Đa nền tảng</h4>
+          <p>Chạy được trên mọi trình duyệt hiện đại, tương thích với điện thoại và máy tính bảng.</p>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="prev">&lt;</button>
+        <button class="next">&gt;</button>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="testimonials">
+    <div class="container">
+      <h2>Lời chứng thực từ khách hàng</h2>
+      <div class="testimonial-grid">
+
+        <div class="testimonial-item">
+          <img src="images/CusMAI.jpg" alt="Người dùng 1" />
+          <h4>Nguyễn Thị Mai</h4>
+          <p>“Từ bé đến lớn mình chưa thấy WebGIS nào tiện lợi như này cả”</p>
+        </div>
+
+        <div class="testimonial-item">
+          <img src="images/CusNga.jpg" alt="Người dùng 2" />
+          <h4>Nguyễn Thị Nga</h4>
+          <p>“Mình thấy giao diện dễ nhìn, dễ thao tác, xử lý rất nhanh.”</p>
+        </div>
+
+        <div class="testimonial-item">
+          <img src="images/CusHuong.jpg" alt="Người dùng 3" />
+          <h4>Lê Thị Hương</h4>
+          <p>“WebGIS thì tốt quá rồi mình chỉ thấy bạn Dev đẹp trai quá.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <p>Thiết kế bởi Nhóm Maptrix</p>
+  </footer>
+
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const slidesContainer = document.querySelector('.carousel .slides');
+      const slides = document.querySelectorAll('.carousel .slide');
+      const prevBtn = document.querySelector('.carousel .prev');
+      const nextBtn = document.querySelector('.carousel .next');
+      let currentIndex = 0;
+
+      function updateSlidePosition() {
+        slidesContainer.style.transform = 'translateX(' + -currentIndex * 100 + '%)';
+      }
+
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+        updateSlidePosition();
+      });
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+        updateSlidePosition();
+      });
+
+      setInterval(() => {
+        currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+        updateSlidePosition();
+      }, 5000);
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
